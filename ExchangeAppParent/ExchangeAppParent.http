@@ -1,0 +1,6 @@
+@ExchangeAppParent_HostAddress = http://localhost:5235
+
+GET {{ExchangeAppParent_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

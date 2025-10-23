@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ExchangeApp.Test.ExchangeTest (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "ExchangeApp.Test.ExchangeTest (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

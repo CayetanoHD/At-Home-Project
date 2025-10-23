@@ -1,0 +1,6 @@
+@ExchangeApp3_HostAddress = http://localhost:5197
+
+GET {{ExchangeApp3_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
