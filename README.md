@@ -1,4 +1,5 @@
 ------------------------ENGLISH--------------------------------------------
+
 Running the Project with Multiple APIs
 
 Open the solution in Visual Studio.
@@ -21,6 +22,7 @@ If you try to use a different currency, the system will return an error stating 
 
 
 -------------------------ESPAÑOL--------------------------------------------
+
 Para ejecutar el proyecto junto con sus diferentes APIs:
 
 Abre la solución en Visual Studio.
