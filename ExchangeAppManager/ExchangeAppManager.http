@@ -1,6 +1,0 @@
-@ExchangeAppManager_HostAddress = http://localhost:5288
-
-GET {{ExchangeAppManager_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
