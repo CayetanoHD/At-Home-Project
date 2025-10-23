@@ -47,13 +47,13 @@ namespace ExchangeApp.Infrastructure.ExternalProviders.ExternalCallService
                 // 🔹 Validar monedas permitidas
                 var allowedCurrencies = new[] { "USD", "DOP", "EUR" };
 
-                if (string.IsNullOrWhiteSpace(request.To))
+                if (string.IsNullOrWhiteSpace(request.TargetCurrency))
                 {
                     _logger.LogWarning("Target currency is null or empty");
                     return Result<ExchangeResponseDto>.Failure("Target currency is required.");
                 }
 
-                var toCurrency = request.To.ToUpper();
+                var toCurrency = request.TargetCurrency.ToUpper();
                 if (!allowedCurrencies.Contains(toCurrency))
                 {
                     _logger.LogWarning("Conversion attempt to unsupported currency: {To}", toCurrency);
@@ -63,11 +63,11 @@ namespace ExchangeApp.Infrastructure.ExternalProviders.ExternalCallService
                 }
 
                 _logger.LogInformation("Sending conversion request to API1: {From} -> {To}, amount {Amount}",
-                    request.From, toCurrency, request.Amount);
+                    request.SourceCurrency, toCurrency, request.Amount);
 
                 var response = await _httpClient.PostAsJsonAsync("api/api1/convert", new
                 {
-                    From = request.From,
+                    From = request.SourceCurrency,
                     To = toCurrency,
                     Value = request.Amount
                 });

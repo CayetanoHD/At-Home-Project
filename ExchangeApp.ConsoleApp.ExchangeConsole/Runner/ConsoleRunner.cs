@@ -1,5 +1,4 @@
-﻿using ExchangeApp.ConsoleApp.ExchangeConsole.Services;
-using ExchangeApp.Core.Application.Dtos;
+﻿using ExchangeApp.Core.Application.Dtos;
 using ExchangeApp.Core.Application.Interfaces.Console;
 using System;
 using System.Net.Http;
@@ -60,9 +59,10 @@ namespace ExchangeApp.ConsoleApp.ExchangeConsole.Runner
                     continue;
                 }
 
-                var request = new ExchangeRequestDto { From = from, To = to, Amount = amount };
+                var request = new ExchangeRequestDto { SourceCurrency = from, TargetCurrency = to, Amount = amount };
 
                 Console.WriteLine("\nProcessing conversion...\n");
+
 
                 var result = await _apiParent.GetBestOfferAsync(request);
 

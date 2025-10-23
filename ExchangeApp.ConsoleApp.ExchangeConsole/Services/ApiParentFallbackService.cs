@@ -37,6 +37,7 @@ namespace ExchangeApp.ConsoleApp.ExchangeConsole.Services
             try
             {
                 _logger.LogInformation("Consultando API principal...");
+
                 var response = await _httpClient.PostAsJsonAsync("exchange/best-offer", request);
 
                 if (!response.IsSuccessStatusCode)
@@ -54,8 +55,10 @@ namespace ExchangeApp.ConsoleApp.ExchangeConsole.Services
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error al consultar API principal. Usando fallback...");
+
                 return await _bestRateService.GetBestRateAsync(request);
             }
         }
+
     }
 }

@@ -47,7 +47,7 @@ namespace ExchangeApp.Infrastructure.ExternalProviders.ExternalCallService
                 // 🔹 Validate allowed target currencies
                 var allowedCurrencies = new[] { "USD", "DOP", "EUR" };
 
-                if (!allowedCurrencies.Contains(request.To.ToUpper()))
+                if (!allowedCurrencies.Contains(request.TargetCurrency.ToUpper()))
                 {
                     return Result<ExchangeResponseDto>.Failure(
                         "Only conversions to USD, DOP, or EUR are allowed."
@@ -57,8 +57,8 @@ namespace ExchangeApp.Infrastructure.ExternalProviders.ExternalCallService
                 // 1️⃣ Prepare XML request
                 var xmlRequest = new Api3Request
                 {
-                    From = request.From,
-                    To = request.To,
+                    From = request.SourceCurrency,
+                    To = request.TargetCurrency,
                     Amount = request.Amount
                 };
 
