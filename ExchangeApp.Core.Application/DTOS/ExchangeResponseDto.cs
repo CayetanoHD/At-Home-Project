@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 
 namespace ExchangeApp.Core.Application.DTOS
 {
-    using System.Xml.Serialization;
-
     public class ExchangeResponseDto
     {
         public string ProviderName { get; set; }
