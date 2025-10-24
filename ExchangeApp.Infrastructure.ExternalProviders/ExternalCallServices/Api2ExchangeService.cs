@@ -64,13 +64,14 @@ namespace ExchangeApp.Infrastructure.ExternalProviders.ExternalCallService
 
                 _logger.LogInformation("Sending conversion request to API2: {From} -> {To}, amount {Amount}",
                     request.SourceCurrency, toCurrency, request.Amount);
-                var api2Request = new Api2Request
+
+                var response = await _httpClient.PostAsJsonAsync("api/api2/convert", new
                 {
-                    SourceCurrency = request.SourceCurrency,
+                    request.SourceCurrency,
                     TargetCurrency = toCurrency,
                     Quantity = request.Amount
-                };
-                var response = await _httpClient.PostAsJsonAsync("api/api2/convert", api2Request);
+
+                });
 
                 if (!response.IsSuccessStatusCode)
                 {
