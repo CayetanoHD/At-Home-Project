@@ -1,128 +1,152 @@
+# 💱 Exchange App
+
+A multi-API currency exchange application built with .NET that compares rates across multiple providers to find the best exchange rate for your currency conversions.
+
+## 📁 Project Structure
+
+```
 At-Home-Project/
-```text
-Src/
- ├── ConsoleApp/
- │   └── ExchangeApp.ConsoleApp.ExchangeConsole/
- │       ├── Runner/
- │       │   └── ConsoleRunner.cs
- │       ├── Services/
- │       │   └── ApiParentFallbackService.cs
- │       └── Program.cs
- ├── Core/
- │   └── ExchangeApp.Core.Application/
- │       ├── DTOs/
- │       │   ├── Apis/
- │       │   │   ├── Api1/
- │       │   │   │   ├── Api1Request.cs
- │       │   │   │   └── Api1Response.cs
- │       │   │   ├── Api2/
- │       │   │   │   ├── Api2Request.cs
- │       │   │   │   └── Api2Response.cs
- │       │   │   ├── Api3/
- │       │   │   │   ├── Api3Request.cs
- │       │   │   │   └── Api3Response.cs
- │       │   │   └── ApiCallResult.cs
- │       │   ├── ExchangeRequestDto.cs
- │       │   └── ExchangeResponseDto.cs
- │       ├── Interfaces/
- │       │   ├── Apis/
- │       │   │   ├── IApi1Service.cs
- │       │   │   ├── IApi2Service.cs
- │       │   │   └── IApi3Service.cs
- │       │   ├── Console/
- │       │   │   └── IApiParentFallbackService.cs
- │       │   ├── ExternalApi/
- │       │   │   ├── IApi1ExchangeService.cs
- │       │   │   ├── IApi2ExchangeService.cs
- │       │   │   └── IApi3ExchangeService.cs
- │       │   └── IBestRateService.cs
- │       ├── Results/
- │       │   └── Result.cs
- │       └── Services/
- │           ├── Api1/
- │           │   └── Api1Service.cs
- │           ├── Api2/
- │           │   └── Api2Service.cs
- │           ├── Api3/
- │           │   └── Api3Service.cs
- │           └── BestRateService.cs
- ├── Infrastructure/
- │   └── ExchangeApp.Infrastructure.ExternalProviders/
- │       └── ExternalCallServices/
- │           ├── Api1ExchangeService.cs
- │           ├── Api2ExchangeService.cs
- │           └── Api3ExchangeService.cs
- └── Test/
- │     ├── ExchangeApp.UnitTest.ExchangeTest/
- │     │   ├── Mocks/
- │     │   │   ├── Api1ServiceMock.cs
- │     │   │   ├── Api2ServiceMock.cs
- │     │   │   └── Api3ServiceMock.cs
- │     │   ├── Services/
- │     │   │   ├── Api1ServiceTests.cs
- │     │   │   ├── Api2ServiceTests.cs
- │     │   │   └── Api3ServiceTests.cs
- │     │   └── ServicesMock/
- │     │       ├── Api1ServiceMockTest.cs
- │     │       ├── Api2ServiceMockTest.cs
- │     │       ├── Api3ServiceMockTest.cs
- │     │       └── BestRateServiceMockTest.cs
- │     └── WebApis/
- │         ├── ExchangeApp1/
- │         ├── ExchangeApp2/
- │         ├── ExchangeApp3/
- │         └── ExchangeAppParent/
- │
- │
- └── README.md
+├── Src/
+│   ├── ConsoleApp/
+│   │   └── ExchangeApp.ConsoleApp.ExchangeConsole/
+│   │       ├── Runner/
+│   │       │   └── ConsoleRunner.cs
+│   │       ├── Services/
+│   │       │   └── ApiParentFallbackService.cs
+│   │       └── Program.cs
+│   │
+│   ├── Core/
+│   │   └── ExchangeApp.Core.Application/
+│   │       ├── DTOs/
+│   │       │   ├── Apis/
+│   │       │   │   ├── Api1/
+│   │       │   │   ├── Api2/
+│   │       │   │   ├── Api3/
+│   │       │   │   └── ApiCallResult.cs
+│   │       │   ├── ExchangeRequestDto.cs
+│   │       │   └── ExchangeResponseDto.cs
+│   │       ├── Interfaces/
+│   │       │   ├── Apis/
+│   │       │   ├── Console/
+│   │       │   ├── ExternalApi/
+│   │       │   └── IBestRateService.cs
+│   │       ├── Results/
+│   │       │   └── Result.cs
+│   │       └── Services/
+│   │           ├── Api1/
+│   │           ├── Api2/
+│   │           ├── Api3/
+│   │           └── BestRateService.cs
+│   │
+│   ├── Infrastructure/
+│   │   └── ExchangeApp.Infrastructure.ExternalProviders/
+│   │       └── ExternalCallServices/
+│   │           ├── Api1ExchangeService.cs
+│   │           ├── Api2ExchangeService.cs
+│   │           └── Api3ExchangeService.cs
+│   │
+│   └── Test/
+│       ├── ExchangeApp.UnitTest.ExchangeTest/
+│       │   ├── Mocks/
+│       │   ├── Services/
+│       │   └── ServicesMock/
+│       │
+│       └── WebApis/
+│           ├── ExchangeApp1/
+│           ├── ExchangeApp2/
+│           ├── ExchangeApp3/
+│           └── ExchangeAppParent/
+│
+└── README.md
+```
 
 ## ⚙️ How It Works
 
-1. **Console app** sends one set of data  
-   json
-   { "sourceCurrency": "USD", "targetCurrency": "DOP", "amount": 100 }
+The console application sends a currency exchange request with the following format:
 
-------------------------ENGLISH--------------------------------------------
+```json
+{
+  "sourceCurrency": "USD",
+  "targetCurrency": "DOP",
+  "amount": 100
+}
+```
 
-Running the Project with Multiple APIs
+The application then queries multiple exchange rate APIs, compares the results, and returns the best available rate.
 
-Open the solution in Visual Studio.
+## 🚀 Getting Started
 
-Right-click on the solution and select “Set Startup Projects…”.
+### Prerequisites
 
-Enable the option “Multiple startup projects”.
+- Visual Studio 2022 or later
+- .NET 6.0 or later
 
-A table will appear with the headers Project and Action.
+### Running Multiple APIs Simultaneously
 
-In the Action column, choose Start for each project you want to run when the solution starts.
+1. Open the solution in **Visual Studio**
+2. Right-click on the solution in Solution Explorer
+3. Select **"Set Startup Projects..."** (or **"Configurar proyecto de inicio"** in Spanish)
+4. Enable the option **"Multiple startup projects"** (or **"Configurar múltiples proyectos de inicio"**)
+5. A table will appear with columns: **Project** and **Action**
+6. In the **Action** column, select **Start** for each API project you want to run:
+   - ExchangeApp1
+   - ExchangeApp2
+   - ExchangeApp3
+   - ExchangeAppParent
+   - ExchangeApp.ConsoleApp.ExchangeConsole
+7. Click **OK** to save the configuration
+8. Press **F5** or click **Start** to run all projects simultaneously
 
-This allows you to run multiple projects simultaneously when launching the solution.
+## 💰 Supported Currencies
 
-Conversion Tests (Allowed Currencies)
+The application currently supports conversions between the following currencies:
 
-The program only allows conversions between DOP, USD, and EUR.
+- **USD** - United States Dollar
+- **EUR** - Euro
+- **DOP** - Dominican Peso
 
-If you try to use a different currency, the system will return an error stating that only USD, DOP, and EUR are allowed.
+### Currency Validation
+
+⚠️ **Important:** The system only allows conversions between USD, DOP, and EUR.
+
+If you attempt to use any other currency, the system will return an error message indicating that only these three currencies are permitted.
+
+**Example of valid requests:**
+- USD → DOP
+- EUR → USD
+- DOP → EUR
+
+**Example of invalid requests:**
+- GBP → USD ❌
+- USD → JPY ❌
+
+## 🧪 Testing
+
+The project includes comprehensive unit tests located in:
+
+```
+Test/ExchangeApp.UnitTest.ExchangeTest/
+├── Mocks/
+├── Services/
+└── ServicesMock/
+```
+
+Run the tests using Visual Studio Test Explorer or with the following command:
+
+```bash
+dotnet test
+```
+
+## 🏗️ Architecture
+
+The project follows Clean Architecture principles with clear separation of concerns:
+
+- **ConsoleApp**: Entry point and console interface
+- **Core.Application**: Business logic, DTOs, and service interfaces
+- **Infrastructure**: External API integrations and data providers
+- **Test**: Unit tests and mock web APIs
 
 
--------------------------ESPAÑOL--------------------------------------------
+---
 
-Para ejecutar el proyecto junto con sus diferentes APIs:
-
-Abre la solución en Visual Studio.
-
-Haz clic derecho sobre la solución y selecciona "Configurar proyecto de inicio".
-
-Activa la opción "Configurar múltiples proyectos de inicio".
-
-Aparecerá una tabla con los encabezados Project y Action.
-
-En la columna Action, selecciona para cada proyecto si deseas que se ejecute al iniciar.
-
-Con esto, podrás ejecutar varios proyectos al mismo tiempo cuando inicies la solución.
-
-Pruebas de conversión (monedas permitidas)
-
-El programa solo permite convertir entre DOP, USD y EUR.
-
-Si intentas usar otra moneda, el sistema debe devolver un error indicando que solo se permiten USD, DOP y EUR.
+**Note:** Make sure all API projects are running before testing the console application to ensure proper rate comparison functionality.
