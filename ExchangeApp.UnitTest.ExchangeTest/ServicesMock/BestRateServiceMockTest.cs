@@ -36,7 +36,7 @@ namespace ExchangeApp.UnitTest.ExchangeTest.ServicesMock
         public async Task GetBestRateAsync_ShouldReturnBestOffer_WhenAllApisSucceed()
         {
             // Arrange
-            var request = new ExchangeRequestDto { From = "USD", To = "DOP", Amount = 10 };
+            var request = new ExchangeRequestDto { SourceCurrency = "USD", TargetCurrency = "DOP", Amount = 10 };
 
             _api1Mock.Setup(a => a.GetRateAsync(request))
                 .ReturnsAsync(Result<ExchangeResponseDto>.Success(new ExchangeResponseDto { ConvertedAmount = 590m, ProviderName = "API1" }));
@@ -62,7 +62,7 @@ namespace ExchangeApp.UnitTest.ExchangeTest.ServicesMock
         public async Task GetBestRateAsync_ShouldHandlePartialFailures()
         {
             // Arrange
-            var request = new ExchangeRequestDto { From = "USD", To = "DOP", Amount = 10 };
+            var request = new ExchangeRequestDto { SourceCurrency = "USD", TargetCurrency = "DOP", Amount = 10 };
 
             _api1Mock.Setup(a => a.GetRateAsync(It.IsAny<ExchangeRequestDto>()))
                 .ReturnsAsync(Result<ExchangeResponseDto>.Failure("API1 error"));
@@ -92,7 +92,7 @@ namespace ExchangeApp.UnitTest.ExchangeTest.ServicesMock
         public async Task GetBestRateAsync_ShouldReturnNullBestOffer_WhenAllApisFail()
         {
             // Arrange
-            var request = new ExchangeRequestDto { From = "USD", To = "DOP", Amount = 10 };
+            var request = new ExchangeRequestDto { SourceCurrency = "USD", TargetCurrency = "DOP", Amount = 10 };
 
             _api1Mock.Setup(a => a.GetRateAsync(request))
                 .ReturnsAsync(Result<ExchangeResponseDto>.Failure("API1 error"));

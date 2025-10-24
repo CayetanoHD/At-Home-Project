@@ -8,7 +8,7 @@ namespace ExchangeApp.Core.Application.DTOS
 {
     using System.Xml.Serialization;
 
-    [XmlRoot("ExchangeResponse")] // Solo usado por XmlSerializer
+    [XmlRoot("ExchangeResponse")] 
     public class ExchangeResponseDto
     {
         [XmlElement("ProviderName")]
