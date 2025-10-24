@@ -1,3 +1,87 @@
+At-Home-Project/
+```text
+Src/
+ ├── ConsoleApp/
+ │   └── ExchangeApp.ConsoleApp.ExchangeConsole/
+ │       ├── Runner/
+ │       │   └── ConsoleRunner.cs
+ │       ├── Services/
+ │       │   └── ApiParentFallbackService.cs
+ │       └── Program.cs
+ ├── Core/
+ │   └── ExchangeApp.Core.Application/
+ │       ├── DTOs/
+ │       │   ├── Apis/
+ │       │   │   ├── Api1/
+ │       │   │   │   ├── Api1Request.cs
+ │       │   │   │   └── Api1Response.cs
+ │       │   │   ├── Api2/
+ │       │   │   │   ├── Api2Request.cs
+ │       │   │   │   └── Api2Response.cs
+ │       │   │   ├── Api3/
+ │       │   │   │   ├── Api3Request.cs
+ │       │   │   │   └── Api3Response.cs
+ │       │   │   └── ApiCallResult.cs
+ │       │   ├── ExchangeRequestDto.cs
+ │       │   └── ExchangeResponseDto.cs
+ │       ├── Interfaces/
+ │       │   ├── Apis/
+ │       │   │   ├── IApi1Service.cs
+ │       │   │   ├── IApi2Service.cs
+ │       │   │   └── IApi3Service.cs
+ │       │   ├── Console/
+ │       │   │   └── IApiParentFallbackService.cs
+ │       │   ├── ExternalApi/
+ │       │   │   ├── IApi1ExchangeService.cs
+ │       │   │   ├── IApi2ExchangeService.cs
+ │       │   │   └── IApi3ExchangeService.cs
+ │       │   └── IBestRateService.cs
+ │       ├── Results/
+ │       │   └── Result.cs
+ │       └── Services/
+ │           ├── Api1/
+ │           │   └── Api1Service.cs
+ │           ├── Api2/
+ │           │   └── Api2Service.cs
+ │           ├── Api3/
+ │           │   └── Api3Service.cs
+ │           └── BestRateService.cs
+ ├── Infrastructure/
+ │   └── ExchangeApp.Infrastructure.ExternalProviders/
+ │       └── ExternalCallServices/
+ │           ├── Api1ExchangeService.cs
+ │           ├── Api2ExchangeService.cs
+ │           └── Api3ExchangeService.cs
+ └── Test/
+ │     ├── ExchangeApp.UnitTest.ExchangeTest/
+ │     │   ├── Mocks/
+ │     │   │   ├── Api1ServiceMock.cs
+ │     │   │   ├── Api2ServiceMock.cs
+ │     │   │   └── Api3ServiceMock.cs
+ │     │   ├── Services/
+ │     │   │   ├── Api1ServiceTests.cs
+ │     │   │   ├── Api2ServiceTests.cs
+ │     │   │   └── Api3ServiceTests.cs
+ │     │   └── ServicesMock/
+ │     │       ├── Api1ServiceMockTest.cs
+ │     │       ├── Api2ServiceMockTest.cs
+ │     │       ├── Api3ServiceMockTest.cs
+ │     │       └── BestRateServiceMockTest.cs
+ │     └── WebApis/
+ │         ├── ExchangeApp1/
+ │         ├── ExchangeApp2/
+ │         ├── ExchangeApp3/
+ │         └── ExchangeAppParent/
+ │
+ │
+ └── README.md
+
+## ⚙️ How It Works
+
+1. **Console app** sends one set of data  
+   json
+   { "sourceCurrency": "USD", "targetCurrency": "DOP", "amount": 100 }
+
 ------------------------ENGLISH--------------------------------------------
 
 Running the Project with Multiple APIs
