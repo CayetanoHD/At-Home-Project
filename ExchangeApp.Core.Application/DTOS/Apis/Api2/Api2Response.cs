@@ -1,4 +1,4 @@
-﻿namespace ExchangeApp.Core.Application.DTOS.Apis
+﻿namespace ExchangeApp.Core.Application.DTOS.Apis.Api2
 {
     public class Api2Response
     {

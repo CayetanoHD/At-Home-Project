@@ -1,4 +1,4 @@
-﻿using ExchangeApp.Core.Application.DTOS.Apis;
+﻿using ExchangeApp.Core.Application.DTOS.Apis.Api2;
 using ExchangeApp.Core.Application.Interfaces.Apis;
 using ExchangeApp.Core.Application.Results;
 using Microsoft.AspNetCore.Mvc;
@@ -19,20 +19,20 @@ namespace ExchangeApp2.Controllers
         }
 
         [HttpPost("convert")]
-        [ProducesResponseType(typeof(Api2Response), StatusCodes.Status200OK)]     
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]                    
-        public async Task<IActionResult> Convert([FromBody] JsonElement body)
+        [ProducesResponseType(typeof(Api2Response), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult Convert([FromBody] Api2Request request)
         {
             try
             {
-                string from = body.GetProperty("source_currency").GetString() ?? "";
-                string to = body.GetProperty("target_currency").GetString() ?? "";
-                decimal amount = body.GetProperty("quantity").GetDecimal();
-
-                if (string.IsNullOrWhiteSpace(from) || string.IsNullOrWhiteSpace(to) || amount <= 0)
+                if (string.IsNullOrWhiteSpace(request.SourceCurrency) ||
+                    string.IsNullOrWhiteSpace(request.TargetCurrency) ||
+                    request.Quantity <= 0)
+                {
                     return BadRequest("Invalid input.");
+                }
 
-                var result = _service.Convert(from, to, amount);
+                var result = _service.Convert(request.SourceCurrency, request.TargetCurrency, request.Quantity);
 
                 if (result.IsFailure)
                     return BadRequest(result.Error);
@@ -44,6 +44,7 @@ namespace ExchangeApp2.Controllers
                 return BadRequest($"Invalid request: {ex.Message}");
             }
         }
+
 
 
 

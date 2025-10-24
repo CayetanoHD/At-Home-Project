@@ -1,4 +1,4 @@
-﻿using ExchangeApp.Core.Application.DTOS.Apis;
+﻿using ExchangeApp.Core.Application.DTOS.Apis.API;
 using ExchangeApp.Core.Application.Interfaces.Apis;
 using ExchangeApp.Core.Application.Results;
 using Microsoft.Extensions.Logging;

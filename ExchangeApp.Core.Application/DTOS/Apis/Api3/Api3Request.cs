@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace ExchangeApp.Core.Application.DTOS.Apis
+namespace ExchangeApp.Core.Application.DTOS.Apis.Api3
 {
 
     [XmlRoot("Api3Request")]

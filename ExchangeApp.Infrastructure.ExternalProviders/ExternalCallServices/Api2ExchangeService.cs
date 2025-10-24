@@ -1,6 +1,6 @@
 ﻿using ExchangeApp.Core.Application.Dtos;
 using ExchangeApp.Core.Application.DTOS;
-using ExchangeApp.Core.Application.DTOS.Apis;
+using ExchangeApp.Core.Application.DTOS.Apis.Api2;
 using ExchangeApp.Core.Application.Interfaces.ExternalApi;
 using ExchangeApp.Core.Application.Results;
 using Microsoft.Extensions.Logging;
@@ -64,13 +64,13 @@ namespace ExchangeApp.Infrastructure.ExternalProviders.ExternalCallService
 
                 _logger.LogInformation("Sending conversion request to API2: {From} -> {To}, amount {Amount}",
                     request.SourceCurrency, toCurrency, request.Amount);
-
-                var response = await _httpClient.PostAsJsonAsync("api/api2/convert", new
+                var api2Request = new Api2Request
                 {
-                    source_currency = request.SourceCurrency,
-                    target_currency = toCurrency,
-                    quantity = request.Amount
-                });
+                    SourceCurrency = request.SourceCurrency,
+                    TargetCurrency = toCurrency,
+                    Quantity = request.Amount
+                };
+                var response = await _httpClient.PostAsJsonAsync("api/api2/convert", api2Request);
 
                 if (!response.IsSuccessStatusCode)
                 {

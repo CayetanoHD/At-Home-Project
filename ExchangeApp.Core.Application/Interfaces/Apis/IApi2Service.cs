@@ -1,4 +1,4 @@
-﻿using ExchangeApp.Core.Application.DTOS.Apis;
+﻿using ExchangeApp.Core.Application.DTOS.Apis.Api2;
 using ExchangeApp.Core.Application.Results;
 
 namespace ExchangeApp.Core.Application.Interfaces.Apis
