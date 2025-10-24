@@ -1,4 +1,5 @@
 At-Home-Project/
+```text
 Src/
  ├── ConsoleApp/
  │   └── ExchangeApp.ConsoleApp.ExchangeConsole/
@@ -74,7 +75,7 @@ Src/
  │
  │
  └── README.md
-
+```text
 ## ⚙️ How It Works
 
 1. **Console app** sends one set of data  
