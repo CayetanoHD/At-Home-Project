@@ -79,7 +79,7 @@ The application then queries multiple exchange rate APIs, compares the results, 
 ### Prerequisites
 
 - Visual Studio 2022 or later
-- .NET 6.0 or later
+- .NET 8.0 or later
 
 ### Running Multiple APIs Simultaneously
 
